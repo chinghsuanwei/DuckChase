@@ -1,0 +1,51 @@
+#ifndef __USERMODEBOARD_H__
+#define __USERMODEBOARD_H__
+
+#include <algorithm>
+#include <vector>
+#include <iostream>
+
+#include "PieceType.h"
+#include "DarkChessPoint.h"
+
+using namespace std;
+
+#define BOARD_SIZE 32
+#define BOARD_WIDTH 8
+#define BOARD_HEIGHT 4
+
+const int PIECES[] = 
+{ PIECETYPE_BLACK_KING,
+	PIECETYPE_BLACK_ADVISER, PIECETYPE_BLACK_ADVISER,
+	PIECETYPE_BLACK_ELEPHANT, PIECETYPE_BLACK_ELEPHANT,
+	PIECETYPE_BLACK_CHARIOT, PIECETYPE_BLACK_CHARIOT,
+	PIECETYPE_BLACK_HORSE, PIECETYPE_BLACK_HORSE,
+	PIECETYPE_BLACK_CANNON, PIECETYPE_BLACK_CANNON,
+	PIECETYPE_BLACK_PAWN, PIECETYPE_BLACK_PAWN, PIECETYPE_BLACK_PAWN, PIECETYPE_BLACK_PAWN, PIECETYPE_BLACK_PAWN,
+
+	PIECETYPE_RED_KING,
+	PIECETYPE_RED_ADVISER, PIECETYPE_RED_ADVISER,
+	PIECETYPE_RED_ELEPHANT, PIECETYPE_RED_ELEPHANT,
+	PIECETYPE_RED_CHARIOT, PIECETYPE_RED_CHARIOT,
+	PIECETYPE_RED_HORSE, PIECETYPE_RED_HORSE,
+	PIECETYPE_RED_CANNON, PIECETYPE_RED_CANNON,
+	PIECETYPE_RED_PAWN, PIECETYPE_RED_PAWN, PIECETYPE_RED_PAWN, PIECETYPE_RED_PAWN, PIECETYPE_RED_PAWN
+};
+
+class UserModeBoard
+{
+	struct UserModePiece{
+		int m_iPieceType;
+		bool bCovered;
+	};
+public:
+	UserModeBoard(void);
+	void move( const DarkChessPoint& from, const DarkChessPoint& to );
+	void flip( const DarkChessPoint& position );
+	void UserModeBoard::showBoard();
+	~UserModeBoard(void);
+public:
+	UserModePiece m_board[32];
+};
+
+#endif
